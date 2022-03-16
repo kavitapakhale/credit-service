@@ -1,4 +1,8 @@
 node 
+
+def MAVEN_HOME = tool "mymaven"
+   env.PATH = "${env.PATH}:${MAVEN_HOME}/bin"
+
 { 
      stage('checkout')
   {
