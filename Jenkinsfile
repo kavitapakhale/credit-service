@@ -21,7 +21,7 @@ stage('Code Quality Analysis'){
     
     withSonarQubeEnv('kavisonar') 
 	    	{
-                 sh 'mvn sonar:sonar -Dsonar.organization=kavisonar -Dsonar.projectKey=credit-service'
+                 sh 'mvn sonar:sonar -Dsonar.organization=kavisonar -Dsonar.projectKey=kavisonar'
 		
     		}
   }
