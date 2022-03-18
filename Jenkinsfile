@@ -17,5 +17,13 @@ stage ('Unit Testing')
    {
    sh 'mvn test'
    }
+stage('Code Quality Analysis'){
+    
+    withSonarQubeEnv('mysonar') 
+	    	{
+                 sh 'mvn sonar:sonar -Dsonar.organization=myorg11222021 -Dsonar.projectKey=rd-credit-service'
+		
+    		}
+  }
 
 }
