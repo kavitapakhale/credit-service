@@ -28,6 +28,7 @@ stage('Code Quality Analysis'){
                  sh 'mvn sonar:sonar -Dsonar.organization=kaviprash -Dsonar.projectKey=kaviprash'
 		
     		}
+	stash includes: '*', name: 'myproject'
   }
 
 }
