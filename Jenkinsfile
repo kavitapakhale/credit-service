@@ -35,7 +35,7 @@ node('kubernetes'){
    container('podman') {
 	stage('Image Build'){
 	   unstash 'myproject'
-	   sh 'podman image build -t credit-service .'	
+	   sh 'podman image build -t kaviprash-credit-service .'	
 		
 	}
    }
