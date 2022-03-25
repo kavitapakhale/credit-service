@@ -32,7 +32,7 @@ stage('Code Quality Analysis'){
   }
 stage('code build'){
 	sh 'mvn package'
-	sh 'ls -l'
+	
 	stash includes: 'Dockerfile', name: 'dfile'
         stash includes: 'target/', name: 'efile'
 	}
@@ -47,5 +47,12 @@ node('kubernetes'){
 	}
    }
 }
-
+node{
+	stage('Dev Deploy'){
+			
+			sh '/tmp/kubectl apply -f k8s/Deployment.yaml'
+			
+		}
+		
+	}
 }
