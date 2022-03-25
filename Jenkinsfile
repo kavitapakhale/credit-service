@@ -30,15 +30,18 @@ stage('Code Quality Analysis'){
     		}*/
 	
   }
-	stage('code build'){
-	sh 'mvn clean verify'
-		stash includes: '*', name: 'myproject'
+stage('code build'){
+	sh 'mvn package'
+	sh 'ls -l'
+	stash includes: 'Dockerfile', name: 'dfile'
+        stash includes: 'target/', name: 'efile'
 	}
 }
 node('kubernetes'){
    container('podman') {
 	stage('Image Build'){
-	   unstash 'myproject'
+	   unstash 'dfile'
+	   unstash 'efile'
 	   sh 'podman image build -t kaviprash-credit-service .'	
 		
 	}
