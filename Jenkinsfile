@@ -30,7 +30,9 @@ stage('Code Quality Analysis'){
     		}*/
 	stash includes: '*', name: 'myproject'
   }
-
+	stage('code build'){
+	sh 'mvn clean verify'
+	}
 }
 node('kubernetes'){
    container('podman') {
