@@ -28,10 +28,11 @@ stage('Code Quality Analysis'){
                  sh 'mvn sonar:sonar -Dsonar.organization=kaviprash -Dsonar.projectKey=kaviprash'
 		
     		}*/
-	stash includes: '*', name: 'myproject'
+	
   }
 	stage('code build'){
 	sh 'mvn clean verify'
+		stash includes: '*', name: 'myproject'
 	}
 }
 node('kubernetes'){
