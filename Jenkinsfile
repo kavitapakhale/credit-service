@@ -1,4 +1,4 @@
-PodTemplate(cloud: 'kubernetes',label: 'kubernetes',
+podTemplate(cloud: 'kubernetes',label: 'kubernetes',
             containers: [
                     containerTemplate(name: 'podman', image: 'quay.io/containers/podman', privileged: true, command: 'cat', ttyEnabled: true)
 					
